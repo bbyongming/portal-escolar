@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Notas - E.M. Antônio Basílio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="portal.html"><i class="fa-solid fa-graduation-cap"></i> Portal Escolar</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">AB</div>
+        <div class="logo-text">
+          <span class="school-name">ANTÔNIO BASÍLIO</span>
+          <span class="school-sub">Calculadora de Notas</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Início</a></li>
+          <li class="nav-item"><a href="portal.html">Portal Acadêmico</a></li>
+          <li class="nav-item"><a href="ifcalc.html" class="active">Calculadora de Notas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content-wrapper">
+    <section class="section-container">
+      <div class="section-header">
+        <h2>Calculadora de Notas</h2>
+        <p>Insira suas notas bimestrais para calcular sua média parcial e descobrir quantos pontos faltam para passar por média.</p>
+      </div>
+
+      <div class="calc-wrapper">
+        <div class="calc-box">
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label>Média Mínima para Aprovação:</label>
+            <select id="calc-media-alvo" onchange="calculateIFCalc()">
+              <option value="6.0" selected>6.0 (Média Padrão)</option>
+              <option value="7.0">7.0 (Média Avançada)</option>
+              <option value="5.0">5.0 (Média Mínima)</option>
+            </select>
+          </div>
+
+          <div class="calc-grid">
+            <div class="form-group"><label>1º Bimestre (N1)</label><input type="number" id="calc-n1" step="0.1" min="0" max="10" placeholder="Ex: 7.5" oninput="calculateIFCalc()"></div>
+            <div class="form-group"><label>2º Bimestre (N2)</label><input type="number" id="calc-n2" step="0.1" min="0" max="10" placeholder="Ex: 6.0" oninput="calculateIFCalc()"></div>
+            <div class="form-group"><label>3º Bimestre (N3)</label><input type="number" id="calc-n3" step="0.1" min="0" max="10" placeholder="Ex: 8.0" oninput="calculateIFCalc()"></div>
+            <div class="form-group"><label>4º Bimestre (N4)</label><input type="number" id="calc-n4" step="0.1" min="0" max="10" placeholder="Ex: --" oninput="calculateIFCalc()"></div>
+          </div>
+
+          <hr style="margin: 20px 0; border: none; border-top: 1px solid #E0E0E0;">
+
+          <div class="form-group">
+            <label><i class="fa-solid fa-triangle-exclamation"></i> Nota da Prova Final / Recuperação</label>
+            <input type="number" id="calc-pf" step="0.1" min="0" max="10" placeholder="Nota da recuperação" oninput="calculateIFCalc()">
+          </div>
+        </div>
+
+        <div class="calc-box result-card">
+          <h3 style="color: #FFF; margin-bottom: 15px;"><i class="fa-solid fa-chart-pie"></i> Resultado da Simulação</h3>
+          <div class="result-display">
+            <div>
+              <span style="font-size: 0.85rem; color: #CBD5E0; font-weight: bold;">MÉDIA ATUAL</span>
+              <div class="result-score" id="res-media-atual">0.0</div>
+            </div>
+            <div>
+              <span style="font-size: 0.85rem; color: #CBD5E0; font-weight: bold;">PONTOS</span>
+              <div class="result-score" id="res-soma-pontos" style="color: #60A5FA;">0.0 / 24.0</div>
+            </div>
+          </div>
+          <div id="res-status-badge" class="result-status status-alert">Insira as notas bimestrais</div>
+          <div class="result-details" id="res-details-text">Preencha os bimestres acima para simular sua situação acadêmica.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 Escola Municipal Antônio Basílio. Santana do Seridó - RN.</p>
+  </footer>
+
+  <script src="js/brain.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
