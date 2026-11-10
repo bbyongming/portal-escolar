@@ -1,0 +1,520 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
+:root {
+  --dwu-navy: #002B49;
+  --dwu-blue: #004B87;
+  --dwu-orange: #E87722;
+  --dwu-orange-hover: #D06615;
+  --dwu-bg-gray: #F4F6F8;
+  --dwu-card-border: #E2E8F0;
+  --dwu-text-dark: #2D3748;
+  --dwu-text-light: #718096;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--dwu-bg-gray);
+  color: var(--dwu-text-dark);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   2. BARRA DE UTILITÁRIOS SUPERIOR
+   ========================================================================== */
+.top-bar {
+  background-color: var(--dwu-navy);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  padding: 8px 0;
+}
+
+.top-bar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-links a {
+  color: #D1D5DB;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.2s;
+}
+
+.top-links a:hover {
+  color: var(--dwu-orange);
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E NAVEGAÇÃO PRINCIPAL (DWU)
+   ========================================================================== */
+.main-nav {
+  background-color: var(--dwu-blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #FFF;
+}
+
+.logo-icon {
+  background-color: var(--dwu-navy);
+  border: 2px solid var(--dwu-orange);
+  color: #FFF;
+  font-weight: 900;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.school-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.school-sub {
+  font-size: 0.72rem;
+  color: #B0C4DE;
+  text-transform: uppercase;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item a {
+  color: #FFF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 26px 16px;
+  display: block;
+  transition: background 0.2s;
+}
+
+.nav-item a:hover,
+.nav-item a.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-dwu-apply {
+  background-color: var(--dwu-orange);
+  color: #FFF !important;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.btn-dwu-apply:hover {
+  background-color: var(--dwu-orange-hover);
+}
+
+/* ==========================================================================
+   4. HERO BANNER (PÁGINA INICIAL)
+   ========================================================================== */
+.hero-section {
+  background: linear-gradient(135deg, rgba(0,43,73,0.9), rgba(0,75,135,0.85)), 
+              url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: #FFF;
+  padding: 100px 20px;
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  background-color: var(--dwu-orange);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 20px 0;
+  letter-spacing: -1px;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 35px;
+  color: #E2E8F0;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  padding: 14px 28px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-hero-outline {
+  border: 2px solid #FFF;
+  color: #FFF;
+}
+
+.btn-hero-outline:hover {
+  background-color: #FFF;
+  color: var(--dwu-navy);
+}
+
+.btn-hero-fill {
+  background-color: var(--dwu-orange);
+  color: #FFF;
+}
+
+.btn-hero-fill:hover {
+  background-color: var(--dwu-orange-hover);
+}
+
+/* ==========================================================================
+   5. ESTRUTURA DE CONTEÚDO E SEÇÕES
+   ========================================================================== */
+.main-content-wrapper {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section-container {
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  border-top: 4px solid var(--dwu-blue);
+}
+
+.section-header {
+  margin-bottom: 25px;
+}
+
+.section-header h2 {
+  color: var(--dwu-navy);
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-header p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. TELA DE LOGIN E FORMULÁRIOS
+   ========================================================================== */
+.login-box-wrapper {
+  max-width: 450px;
+  margin: 0 auto;
+  background: #F8FAFC;
+  border: 1px solid var(--dwu-card-border);
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.role-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.role-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #666;
+  cursor: pointer;
+}
+
+.role-tab-btn.active {
+  color: var(--dwu-navy);
+  border-bottom: 3px solid var(--dwu-orange);
+  background: #FFF;
+}
+
+.dwu-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--dwu-navy);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #CBD5E0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   7. PORTAL ESCOLAR E ABAS (SUAP)
+   ========================================================================== */
+.portal-card {
+  border: 1px solid var(--dwu-card-border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.portal-tabs {
+  display: flex;
+  background-color: var(--dwu-navy);
+  overflow-x: auto;
+}
+
+.portal-tab-btn {
+  background: none;
+  border: none;
+  color: #A0B2C6;
+  padding: 14px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.portal-tab-btn.active,
+.portal-tab-btn:hover {
+  color: #FFF;
+  border-bottom: 3px solid var(--dwu-orange);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.portal-tab-content {
+  display: none;
+  padding: 25px;
+}
+
+.portal-tab-content.active {
+  display: block;
+}
+
+/* ==========================================================================
+   8. TABELAS E BADGES DE STATUS
+   ========================================================================== */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.dwu-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.dwu-table th {
+  background-color: var(--dwu-navy);
+  color: #FFF;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.dwu-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.dwu-table tbody tr:nth-child(even) {
+  background-color: #F8FAFC;
+}
+
+.dwu-input-table {
+  width: 65px;
+  padding: 6px;
+  border: 1px solid #CBD5E0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.badge-status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-approved { background-color: #DEF7EC; color: #03543F; }
+.badge-rec { background-color: #FEF08A; color: #713F12; }
+.badge-danger { background-color: #FDE8E8; color: #9B1C1C; }
+
+.btn-small {
+  padding: 6px 12px;
+  background: var(--dwu-navy);
+  color: #FFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   9. CALCULADORA IF CALC
+   ========================================================================== */
+.calc-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media(max-width: 768px) {
+  .calc-wrapper { grid-template-columns: 1fr; }
+}
+
+.calc-box {
+  background-color: #F8FAFC;
+  border: 1px solid var(--dwu-card-border);
+  padding: 25px;
+  border-radius: 6px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.result-card {
+  background-color: var(--dwu-navy);
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-display {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.result-score {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--dwu-orange);
+}
+
+.result-status {
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.status-ok { background-color: #22C55E; color: #FFF; }
+.status-rec { background-color: #EAB308; color: #000; }
+.status-alert { background-color: #EF4444; color: #FFF; }
+
+.result-details {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #CBD5E0;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   10. RODAPÉ (FOOTER)
+   ========================================================================== */
+.main-footer {
+  background-color: var(--dwu-navy);
+  color: #FFF;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.footer-links a {
+  color: #A0B2C6;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #FFF;
+}

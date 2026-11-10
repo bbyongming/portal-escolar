@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Acadêmico SUAP - E.M. Antônio Basílio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="ifcalc.html"><i class="fa-solid fa-calculator"></i> Calculadora IF Calc</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">AB</div>
+        <div class="logo-text">
+          <span class="school-name">ANTÔNIO BASÍLIO</span>
+          <span class="school-sub">Portal SUAP</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="index.html">Início</a></li>
+          <li class="nav-item"><a href="portal.html" class="active">Portal Acadêmico</a></li>
+          <li class="nav-item"><a href="ifcalc.html">Calculadora de Notas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content-wrapper">
+    <!-- TELA DE LOGIN -->
+    <section class="section-container" id="login-section">
+      <div class="section-header" style="text-align: center;">
+        <h2>Portal SUAP - Autenticação</h2>
+        <p>Informe seus dados de acesso institucional</p>
+      </div>
+
+      <div class="login-box-wrapper">
+        <div class="role-tabs">
+          <button class="role-tab-btn active" id="tab-btn-aluno" onclick="switchLoginTab('aluno')">Área do Aluno</button>
+          <button class="role-tab-btn" id="tab-btn-prof" onclick="switchLoginTab('professor')">Área do Professor</button>
+        </div>
+
+        <!-- Login Aluno -->
+        <form class="dwu-form" id="form-login-aluno" onsubmit="handleLogin(event, 'aluno')">
+          <div class="form-group">
+            <label>Matrícula</label>
+            <input type="text" id="login-aluno-mat" required placeholder="Ex: 20261">
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" id="login-aluno-pass" required placeholder="Sua senha">
+          </div>
+          <button type="submit" class="btn-dwu-apply" style="border:none; cursor:pointer; text-align:center;">Entrar no Portal</button>
+        </form>
+
+        <!-- Login Professor -->
+        <form class="dwu-form" id="form-login-prof" onsubmit="handleLogin(event, 'professor')" style="display:none;">
+          <div class="form-group">
+            <label>Matrícula / Usuário</label>
+            <input type="text" id="login-prof-mat" required placeholder="Ex: prof-mat ou prof-port">
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" id="login-prof-pass" required placeholder="Sua senha">
+          </div>
+          <button type="submit" class="btn-dwu-apply" style="border:none; cursor:pointer; text-align:center;">Entrar como Professor</button>
+        </form>
+
+        <div style="margin-top: 20px; font-size: 0.8rem; color: #666; text-align: center; border-top: 1px solid #DDD; padding-top: 10px;">
+          * <strong>Logins de teste:</strong><br>
+          Aluno: <strong>20261</strong> | Senha: <strong>123</strong><br>
+          Professor (Matemática): <strong>prof-mat</strong> | Senha: <strong>123</strong><br>
+          Professor (Português): <strong>prof-port</strong> | Senha: <strong>123</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINEL PROTEGIDO -->
+    <section class="section-container" id="dashboard-section" style="display:none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="color: var(--dwu-navy);"><i class="fa-solid fa-user-gear"></i> Painel do Usuário</h2>
+        <button class="btn-small" onclick="logout()" style="background-color: #EF4444;"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+      </div>
+
+      <div class="portal-card">
+        <div class="portal-tabs" id="portal-tabs-container"></div>
+        <!-- CONTEINER OBRIGATÓRIO ADICIONADO AQUI -->
+        <div id="tab-content-area"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 Escola Municipal Antônio Basílio. Santana do Seridó - RN.</p>
+  </footer>
+
+  <script src="js/brain.js"></script>
+  <script src="js/gate.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
