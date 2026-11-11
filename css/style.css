@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
-   ========================================================================== */
 :root {
   --dwu-navy: #002B49;
   --dwu-blue: #004B87;
@@ -25,9 +22,6 @@ body {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   2. BARRA DE UTILITÁRIOS SUPERIOR
-   ========================================================================== */
 .top-bar {
   background-color: var(--dwu-navy);
   color: #FFFFFF;
@@ -55,9 +49,6 @@ body {
   color: var(--dwu-orange);
 }
 
-/* ==========================================================================
-   3. CABEÇALHO E NAVEGAÇÃO PRINCIPAL (DWU)
-   ========================================================================== */
 .main-nav {
   background-color: var(--dwu-blue);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -84,13 +75,22 @@ body {
 }
 
 .logo-icon {
-  background-color: var(--dwu-navy);
-  border: 2px solid var(--dwu-orange);
-  color: #FFF;
-  font-weight: 900;
-  padding: 6px 12px;
-  border-radius: 4px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
   margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logo-text {
@@ -146,9 +146,6 @@ body {
   background-color: var(--dwu-orange-hover);
 }
 
-/* ==========================================================================
-   4. HERO BANNER (PÁGINA INICIAL)
-   ========================================================================== */
 .hero-section {
   background: linear-gradient(135deg, rgba(0,43,73,0.9), rgba(0,75,135,0.85)), 
               url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
@@ -223,9 +220,6 @@ body {
   background-color: var(--dwu-orange-hover);
 }
 
-/* ==========================================================================
-   5. ESTRUTURA DE CONTEÚDO E SEÇÕES
-   ========================================================================== */
 .main-content-wrapper {
   max-width: 1200px;
   margin: 40px auto;
@@ -256,9 +250,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* ==========================================================================
-   6. TELA DE LOGIN E FORMULÁRIOS
-   ========================================================================== */
 .login-box-wrapper {
   max-width: 450px;
   margin: 0 auto;
@@ -318,9 +309,6 @@ body {
   font-family: inherit;
 }
 
-/* ==========================================================================
-   7. PORTAL ESCOLAR E ABAS (SUAP)
-   ========================================================================== */
 .portal-card {
   border: 1px solid var(--dwu-card-border);
   border-radius: 6px;
@@ -360,9 +348,6 @@ body {
   display: block;
 }
 
-/* ==========================================================================
-   8. TABELAS E BADGES DE STATUS
-   ========================================================================== */
 .table-responsive {
   overflow-x: auto;
 }
@@ -419,9 +404,6 @@ body {
   cursor: pointer;
 }
 
-/* ==========================================================================
-   9. CALCULADORA IF CALC
-   ========================================================================== */
 .calc-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -491,9 +473,6 @@ body {
   border-radius: 6px;
 }
 
-/* ==========================================================================
-   10. RODAPÉ (FOOTER)
-   ========================================================================== */
 .main-footer {
   background-color: var(--dwu-navy);
   color: #FFF;
