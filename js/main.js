@@ -2,8 +2,40 @@
  * MAIN.JS - Painéis, Justificativas, Cadastro e Controle de Abas
  */
 
+/**
+ * Normaliza a nota digitada na calculadora.
+ * Aceita "7,5", "7.5", "10.0", "10" e atalhos sem ponto: "75" -> 7.5, "100" -> 10.
+ * Qualquer valor acima de 10 que não se encaixe vira 10.
+ */
+function normalizarNota(raw) {
+  let v = String(raw).replace(',', '.').replace(/[^0-9.]/g, '');
+  const p = v.indexOf('.');
+  if (p !== -1) v = v.slice(0, p + 1) + v.slice(p + 1).replace(/\./g, '');
+  if (v === '' || v === '.') return v;
+  let n = parseFloat(v);
+  if (n > 10) {
+    n = (v.indexOf('.') === -1 && n <= 100) ? n / 10 : 10;
+    return String(n);
+  }
+  return v;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('calc-n1')) {
+    ['calc-n1', 'calc-n2', 'calc-n3', 'calc-n4', 'calc-pf'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      // Corrige o texto enquanto digita (antes do cálculo rodar)
+      el.addEventListener('input', () => {
+        const novo = normalizarNota(el.value);
+        if (novo !== el.value) el.value = novo;
+      }, true);
+      // Ao sair do campo, padroniza com uma casa decimal (ex: 10.0)
+      el.addEventListener('blur', () => {
+        const n = parseFloat(el.value);
+        if (!isNaN(n)) { el.value = n.toFixed(1); calculateIFCalc(); }
+      });
+    });
     calculateIFCalc();
   }
 });
@@ -240,8 +272,9 @@ function handleNewStudentRegister(event) {
 function calculateIFCalc() {
   const parseVal = (id) => {
     const el = document.getElementById(id);
-    if (!el || el.value === "") return null;
-    return parseFloat(el.value);
+    if (!el) return null;
+    const n = parseFloat(normalizarNota(el.value));
+    return isNaN(n) ? null : Math.min(10, Math.max(0, n));
   };
 
   const n1 = parseVal('calc-n1');
@@ -260,7 +293,7 @@ function calculateIFCalc() {
   badge.innerText = res.statusText;
   badge.className = `result-status ${res.badgeClass}`;
 
-  document.getElementById('res-details-text').innerHTML = res.detailsText;
+  document.getElementById('res-details-text').innerHTML = res.detailsText.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 }
 
 function switchPortalTab(tabId, element) {

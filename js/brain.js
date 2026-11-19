@@ -74,28 +74,36 @@ function computeIFCalcEngine(n1, n2, n3, n4, pf, targetMedia = 6.0) {
   let detailsText = "";
 
   if (count === 4) {
+    const EPS = 1e-9;
+    const alvo = targetMedia.toFixed(1);
     const avg = currentSum / 4;
-    if (avg >= targetMedia) {
+    if (avg + EPS >= targetMedia) {
       statusText = "APROVADO POR MÉDIA!";
       badgeClass = "status-ok";
-      detailsText = `Parabéns! Média final ${avg.toFixed(1)}, aprovado com sucesso.`;
+      detailsText = `Parabéns! Média final ${avg.toFixed(1)} (mínimo ${alvo}), aprovado com sucesso.`;
     } else {
-      const neededPF = Math.max(0, 10 - avg).toFixed(1);
+      // Com a recuperação: (média anual + prova final) / 2 precisa chegar à média escolhida
+      const neededPFraw = 2 * targetMedia - avg;
+      const neededPF = (Math.ceil(neededPFraw * 10 - EPS) / 10).toFixed(1);
       if (pf !== null && !isNaN(pf)) {
-        const finalAverage = ((avg + pf) / 2).toFixed(1);
-        if (finalAverage >= 5.0) {
+        const finalAverage = (avg + pf) / 2;
+        if (finalAverage + EPS >= targetMedia) {
           statusText = "APROVADO NA RECUPERAÇÃO";
           badgeClass = "status-ok";
-          detailsText = `Sua média com a recuperação (${pf}) foi ${finalAverage}.`;
+          detailsText = `Sua média com a recuperação (${pf.toFixed(1)}) foi ${finalAverage.toFixed(1)}, atingindo o mínimo de ${alvo}.`;
         } else {
           statusText = "REPROVADO";
           badgeClass = "status-alert";
-          detailsText = `Média final acumulada: ${finalAverage}, abaixo do mínimo (5.0).`;
+          detailsText = `Média final acumulada: ${finalAverage.toFixed(1)}, abaixo do mínimo (${alvo}).`;
         }
+      } else if (neededPFraw > 10 + EPS) {
+        statusText = "REPROVADO";
+        badgeClass = "status-alert";
+        detailsText = `Média anual ${avg.toFixed(1)}. Mesmo com 10.0 na Prova Final a média não chega a ${alvo}.`;
       } else {
         statusText = "EM RECUPERAÇÃO";
         badgeClass = "status-rec";
-        detailsText = `Média anual ${avg.toFixed(1)}. Você precisa tirar no mínimo **${neededPF}** na Prova Final.`;
+        detailsText = `Média anual ${avg.toFixed(1)}. Você precisa tirar no mínimo **${neededPF}** na Prova Final para chegar à média ${alvo}.`;
       }
     }
   } else if (count > 0) {
